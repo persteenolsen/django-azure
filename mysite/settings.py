@@ -183,20 +183,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# 21-10-2025 - Works at Azure but dont work when running locally developing !
 # STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 
-# 21-10-2025 - Needed for locally developing but dont work at Azure !
+# 21-10-2025 - Needed for locally developing and seems to work at Azure too !
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
 
+# Works both locally and at Azure
 STATIC_URL = 'static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# 21-10-2025 - Works at Azure but dont work when running locally developing !
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 21-10-2025 - Needed for locally developing but dont work at Azure !
+# 21-10-2025 - Needed for locally developing and seems to work at Azure too !
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type

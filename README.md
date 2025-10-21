@@ -8,7 +8,7 @@ Last updated: 21-10-2025
 
 ## Demo at Azure
 
-- Hopefully soon
+- https://pso-django.azurewebsites.net
 
 ## Installing
 
@@ -45,63 +45,63 @@ There is no Administration Backend and no Database for this Starter serving Stat
 
 ## How it Works
 
-The Django application, `hello_azure` is configured as an installed application in `quickstartproject/settings.py`:
+The Django application, `example` is configured as an installed application in `mysite/settings.py`:
 
 ```bash
-# quickstartproject/settings.py
+# mysite/settings.py
 INSTALLED_APPS = [
     # ...
-    'hello_azure',
+    'example',
 ]
 ```
 
 We allow the Domain at Azure in production in `ALLOWED_HOSTS`, in addition to 127.0.0.1 locally:
 
 ```bash
-# quickstartproject/settings.py
+# mysite/settings.py
 ALLOWED_HOSTS = ['']
 ```
 
-The `wsgi` module must use a public variable named `app` to expose the WSGI application:
+The `wsgi` module must use a public variable named `application` to expose the WSGI application:
 
 ```bash
-# quickstartproject/wsgi.py
-app = get_wsgi_application()
+# mysite/wsgi.py
+application = get_wsgi_application()
 ```
 
-The corresponding `WSGI_APPLICATION` setting is configured to use the `app` variable from the `quickstartproject.wsgi` module:
+The corresponding `WSGI_APPLICATION` setting is configured to use the `application` variable from the `quickstartproject.wsgi` module:
 
 ```bash
-# quickstartproject/settings.py
-WSGI_APPLICATION = 'quickstartproject.wsgi.app'
+# mysite/settings.py
+WSGI_APPLICATION = 'mysite.wsgi.app'
 ```
 
 This Django example uses the Web Server Gateway Interface (WSGI) with Django to enable handling requests on Azure
 
 ## Routing 
 
-There are severals views in `hello_azure/views.py` which load HTML Django Templates `templates`:
+There are severals views in `example/views.py` which load HTML Django Templates `templates`:
 
-The views are exposed a URL through `hello_azure/urls.py`:
+The views are exposed a URL through `example/urls.py`:
 
 ```bash
-# hello_azure/urls.py
+# example/urls.py
 from django.urls import path
 
-from hello_azure.views import index
+from example.views import index
 urlpatterns = [
     path('', index),
 ]
 ```
-Finally, it's made accessible to the Django server inside `quickstartproject/urls.py`:
+Finally, it's made accessible to the Django server inside `mysite/urls.py`:
 
 ```bash
-# quickstartproject/urls.py
+# mysite/urls.py
 from django.urls import path, include
 
 urlpatterns = [
     ...
-    path('', include('hello_azure.urls')),
+    path('', include('example.urls')),
 ]
 ```
 
@@ -111,7 +111,7 @@ To use templates create the dir 'templates' at root level and put the HTML files
 
 There is only one Django App in the Project and the dir 'templates' can be at root level
 
-Tell Django where to look for Templates by `quickstartproject/settings.py`:
+Tell Django where to look for Templates by `mysite/settings.py`:
 
 Find the section TEMPLATES = [] and add the dir of the Templates
 
@@ -138,9 +138,9 @@ Make sure that the Python package 'whitenoise' is installed from the requirement
 
 Note: Make sure you have the line 'whitenoise.middleware.WhiteNoiseMiddleware' in the 
 
-MIDDLEWARE = [] at the `quickstartproject/settings.py` along with the other packages
+MIDDLEWARE = [] at the `mysite/settings.py` along with the other packages
 
-Finally, take a look at `quickstartproject/settings.py`:
+Finally, take a look at `mysite/settings.py`:
 
 Find where Django now looks for the static files
 
@@ -164,11 +164,11 @@ Note: The above command may not be needed as this Starter dont have a Django Adm
 
 Type the URL in your Browser after deployment to Azure
 
-https:// your project at Azure/static/images/azure-icon.svg
+https:// your project at Azure/static/pso-django.jpg
 
 or the URL when running locally
 
-`http://127.0.0.1:8000/static/images/azure-icon.svg`
+`http://127.0.0.1:8000/static/pso-django.jpg`
 
 If everything is fine the Azure logo will be displayed
 
@@ -194,7 +194,7 @@ python manage.py collectstatic
 
 Note: The above command may not be needed as this Starter dont have a Django Admin backend
 
-Make sure to set Debug = False in the file `quickstartproject/settings.py`
+Make sure to set Debug = False in the file `mysite/settings.py`
 
 Make a commit to GitHub which will start GitHub Actions and the Website will be updated
 
