@@ -37,8 +37,11 @@ load_dotenv()
 # Not: Django will display a 404.html if you have created one :-)
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
+# 21-10-2025 - Only for Developement
+# ALLOWED_HOSTS = ['*']
+
+# 21-10-2025 - For Azure
+ALLOWED_HOSTS = []
 
 # Application definition
 
