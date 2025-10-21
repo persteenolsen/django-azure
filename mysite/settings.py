@@ -39,8 +39,8 @@ import os
 # Not: Django will display a 404.html if you have created one :-)
 DEBUG = False
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
 
 # Application definition
 
