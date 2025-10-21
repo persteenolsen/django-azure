@@ -83,10 +83,10 @@ TEMPLATES = [
          # Initially create the dir 'templates' at root level
          # Root level is fine because there is only one Django App in the Project
          # 'DIRS': [],
-         'DIRS': [BASE_DIR / 'templates'],
+         #'DIRS': [BASE_DIR / 'templates'],
 
          # 21-10-2025 - Test for Azure
-         # 'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+         'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
         
 
         'APP_DIRS': True,
@@ -179,11 +179,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
+# 21-10-2025 - Testing for Azure
 # STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
 STATIC_URL = 'static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# 21-10-2025 - Testing for Azure
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
