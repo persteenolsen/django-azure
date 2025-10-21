@@ -24,8 +24,8 @@ SECRET_KEY = '1234567890'
 
 # 19-10-2025 - loading variables for Django Secret Key + MySQL info
 # Locally
-from dotenv import load_dotenv
-load_dotenv()
+#from dotenv import load_dotenv
+#load_dotenv()
 
 # Getting the secret key from env locally and from enviroment variable in production
 # SECRET_KEY=os.getenv('SECRET_KEY')
