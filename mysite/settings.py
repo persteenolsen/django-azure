@@ -37,10 +37,10 @@ SECRET_KEY = '1234567890'
 # Not: Django will display a 404.html if you have created one :-)
 DEBUG = False
 
-# 21-10-2025 - Only for Developement
+# 21-10-2025 - Needed for locally developing but dont work at Azure !
 # ALLOWED_HOSTS = ['*']
-# ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
-# 21-10-2025 - For Azure
+
+# 21-10-2025 - Needed for Azure but dont work when running locally developing !
 ALLOWED_HOSTS = []
 
 # Application definition
@@ -104,6 +104,7 @@ TEMPLATES = [
     },
 ]
 
+# 21-10-2025 - For Azure - "application" match in asgi.py as well as wsgi.py
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
@@ -182,21 +183,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# 21-10-2025 - Testing for Azure
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+# 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 
-# 21-10-2025 - Works locally
-# STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
+# 21-10-2025 - Needed for locally developing but dont work at Azure !
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
 
 STATIC_URL = 'static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# 21-10-2025 - Testing for Azure
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# 21-10-2025 - Works locally
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# 21-10-2025 - Needed for locally developing but dont work at Azure !
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
