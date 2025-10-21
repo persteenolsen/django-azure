@@ -38,9 +38,11 @@ SECRET_KEY = '1234567890'
 DEBUG = False
 
 # 21-10-2025 - Needed for locally developing but dont work at Azure !
+# DEVELOPEMENT
 # ALLOWED_HOSTS = ['*']
 
 # 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# PRODUCTION
 ALLOWED_HOSTS = []
 
 # Application definition
