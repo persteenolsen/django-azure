@@ -4,7 +4,7 @@
 
 This example shows how to use Django 5 on Azure App Service
 
-Last updated: 20-10-2025
+Last updated: 21-10-2025
 
 ## Demo at Azure
 
