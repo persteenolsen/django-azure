@@ -8,7 +8,7 @@ Last updated: 21-10-2025
 
 ## Demo at Azure
 
-https://pso-django.azurewebsites.net
+- Not at the moment
 
 ## Installing
 
