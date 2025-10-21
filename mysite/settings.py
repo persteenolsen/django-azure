@@ -39,9 +39,9 @@ DEBUG = False
 
 # 21-10-2025 - Only for Developement
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
+# ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
 # 21-10-2025 - For Azure
-# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -183,20 +183,20 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 # 21-10-2025 - Testing for Azure
-# STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
 
 # 21-10-2025 - Works locally
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
+# STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
 
 STATIC_URL = 'static/'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # 21-10-2025 - Testing for Azure
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # 21-10-2025 - Works locally
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
