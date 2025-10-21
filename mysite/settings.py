@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -19,15 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=cldztbc4jg&xl0!x673!*v2_=p$$eu)=7*f#d0#zs$44xx-h^'
-# 05-09-2025 - The above secret key was rotated and no longer valid !
+SECRET_KEY = '1234567890'
 
 # 19-10-2025 - loading variables for Django Secret Key + MySQL info
 # Locally
 from dotenv import load_dotenv
 load_dotenv()
-
-import os
 
 # Getting the secret key from env locally and from enviroment variable in production
 # SECRET_KEY=os.getenv('SECRET_KEY')
@@ -39,12 +37,16 @@ import os
 # Not: Django will display a 404.html if you have created one :-)
 DEBUG = False
 
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
 
 # Application definition
 
 INSTALLED_APPS = [
+
+    # 21-10-2025 - For Azure
+    "whitenoise.runserver_nostatic",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +83,12 @@ TEMPLATES = [
          # Initially create the dir 'templates' at root level
          # Root level is fine because there is only one Django App in the Project
          # 'DIRS': [],
-        'DIRS': [BASE_DIR / 'templates'],
+         'DIRS': [BASE_DIR / 'templates'],
+
+         # 21-10-2025 - Test for Azure
+         # 'DIRS': [ os.path.join(BASE_DIR, 'templates') ],
+        
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -172,30 +179,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-# Settings for serving all kind of static files for Backend Admin and Frontend:
-# Debug = False
-# There are only one Django App in the Project and the dir 'static' and 'assets' are at root level
-# Note: Initially create the dir 'static' with your static files a run the command:
-# "python manage.py collectstatic" and make a commit to GitHub for be ready for Dev + Prod
-# Where Django looks for static files
+# STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('assets')),)
 STATIC_URL = 'static/'
 
-# Where you put your static files ( The dir static needs to match the above static )
-STATIC_ROOT = BASE_DIR/'static' 
-
-#MEDIA_ROOT = '/home/persteen/mysite/media'
-#MEDIA_URL = '/media/'
-
-# Additional directory from which to load static files if wanted
-# Note: Create a root level dir 'assets' locally with your additional static files and run: 
-# "python manage.py collectstatic"
-# Now the static files in the 'assets' dir are copied to the 'static' directory  
-# Commit to GitHub for this to work in production ( At Vercel )
-STATICFILES_DIRS = [
-   
-   # Extra dir put your files 
-   BASE_DIR/'assets' 
-]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
