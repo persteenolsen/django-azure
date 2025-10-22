@@ -37,15 +37,15 @@ load_dotenv()
 DEBUG = False
 
 # 21-10-2025 - Needed for locally developing but dont work at Azure !
-# DEVELOPEMENT
+# DEVELOPEMENT - Disable for Production !
 # ALLOWED_HOSTS = ['*']
 
 # 21-10-2025 - Needed for Azure but dont work when running locally developing !
-# PRODUCTION
+# PRODUCTION - Disable for Developement !
 ALLOWED_HOSTS = []
 
 # 22-10-2025 - Needed at Azure to avoid 403 forbidden when trying to login to the Django Admin Backend
-# PRODUCTION
+# PRODUCTION - Disable for Developement !
 CSRF_TRUSTED_ORIGINS = ['https://pso-django.azurewebsites.net']
 
 # Application definition

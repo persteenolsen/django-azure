@@ -7,6 +7,8 @@ from example.views.alpha import about
 
 from example.views.alpha import me
 
+from example.views.beta import blog
+
 urlpatterns = [
     
     path('', index),
@@ -14,5 +16,7 @@ urlpatterns = [
     path('about', about),
 
     path('me', me),
+
+    path('blog', blog),
 
 ]

@@ -1,6 +1,6 @@
 
 
-# Python + Django + MySQL + Azure App Service
+# Python + Django + MySQL + Models + Azure App Service
 
 This example shows how to use Django 5 on Azure App Service
 
@@ -222,4 +222,35 @@ Make sure to set Debug = False in the file `mysite/settings.py`
 
 Make a commit to GitHub which will start GitHub Actions and the Website will be updated
 
+## Models
+
+Add the simple Model "Post" to be administrated by the Admin Backend and displayed by the Frontend.
+
+- Create a file `example/models.py` with your new Model Post
+
+- Make a regitration of your Model in `example/admin.py`
+
+- Create the View for handling the Posts `example/views.py`
+
+- Add the view / template blog in `example/urls.py`
+
+- Create a Template for display the Posts `templates/blog.html`
+
+- Create a folder with the path: `example/migrations` and run the command:
+
+```bash
+python manage.py makemigrations example
+```
+Note: It is important to add the name of the app in the command `example` !!!
+
+This command will create a file for the migration of the Model to a Table in the MySQL DB
+
+- Now run the command: 
+
+```bash
+python manage.py migrate
+```
+This will create the Table Post in the DB and you are now ready for administrate the Posts by the Django Admin Backend
+
 Happy use of Django :-)
+
