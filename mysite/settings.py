@@ -22,10 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '1234567890'
 
-# 19-10-2025 - loading variables for Django Secret Key + MySQL info
-# Locally
-#from dotenv import load_dotenv
-#load_dotenv()
+# 22-10-2025 - loading variables for Django Secret Key + MySQL info
+from dotenv import load_dotenv
+load_dotenv()
 
 # Getting the secret key from env locally and from enviroment variable in production
 # SECRET_KEY=os.getenv('SECRET_KEY')
@@ -45,8 +44,11 @@ DEBUG = False
 # PRODUCTION
 ALLOWED_HOSTS = []
 
-# Application definition
+# 22-10-2025 - Needed at Azure to avoid 403 forbidden when trying to login to the Django Admin Backend
+# PRODUCTION
+CSRF_TRUSTED_ORIGINS = ['https://pso-django.azurewebsites.net']
 
+# Application definition
 INSTALLED_APPS = [
 
     # 21-10-2025 - For Azure
@@ -126,30 +128,26 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
 # No Database needed for this Starter
-DATABASES = { }
+# DATABASES = { }
 
-# 18-10-2025 - MySQL settings at Azure
-
-'''
-# 19-10-2025 - Loading the MySQL settings from .env file
-# PythonAnywhere only
-DB_ENGINE=os.getenv('DB_ENGINE')
+# 22-10-2025 - Loading the MySQL settings from .env file
 DB_NAME=os.getenv('DB_NAME')
 DB_USER=os.getenv('DB_USER')
 DB_PASSWORD=os.getenv('DB_PASSWORD')
 DB_HOST=os.getenv('DB_HOST')
-DB_PORT=os.getenv('DB_PORT')
 
 DATABASES = {
     'default': {
-        'ENGINE'  : DB_ENGINE,
+        'ENGINE'  : 'django.db.backends.mysql',
+
         'NAME'    : DB_NAME,
         'USER'    : DB_USER,
         'PASSWORD': DB_PASSWORD,
         'HOST'    : DB_HOST,
-        'PORT'    : DB_PORT,
+                       
+        'PORT'    : 3306,
     }
-} '''
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
