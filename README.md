@@ -124,7 +124,7 @@ Your Django application is now available at `http://127.0.0.1:8000/`.
 
 ## The Admin Backend and Databases
 
-The Admin Backend is using a remote MySQL Database for Production, but is able to use a SQLite for Production as well
+The Admin Backend is using a remote MySQL Database for both Production and Developement, and is able to use a SQLite for Developement as well
 
 To connect to the MySQL use "pymysql" installed and the packages from the requirements.txt when using a virtual invironment locally. At Azure everything will happen by DevOps 
 
