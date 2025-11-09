@@ -130,7 +130,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # No Database needed for this Starter
 # DATABASES = { }
 
-# 22-10-2025 - Loading the MySQL settings from .env file
+# 22-10-2025 - Loading the MariaDB settings from .env file
 DB_NAME=os.getenv('DB_NAME')
 DB_USER=os.getenv('DB_USER')
 DB_PASSWORD=os.getenv('DB_PASSWORD')
@@ -138,6 +138,8 @@ DB_HOST=os.getenv('DB_HOST')
 
 DATABASES = {
     'default': {
+
+        # 09-11-2025 - For both MariaDB and MySQL
         'ENGINE'  : 'django.db.backends.mysql',
 
         'NAME'    : DB_NAME,
