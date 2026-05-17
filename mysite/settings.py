@@ -20,14 +20,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1234567890'
+# SECRET_KEY = '1234567890'
 
 # 22-10-2025 - loading variables for Django Secret Key + MySQL info
 from dotenv import load_dotenv
 load_dotenv()
 
+# 15-10-2025 - For working with databases at Render and Neon Cloud
+import dj_database_url
+
+# 15-10-2025 - For working with databases at Render and Neon Cloud
+DATABASE_URL=os.getenv('DATABASE_URL')
+
 # Getting the secret key from env locally and from enviroment variable in production
-# SECRET_KEY=os.getenv('SECRET_KEY')
+SECRET_KEY=os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
@@ -40,7 +46,7 @@ DEBUG = False
 # DEVELOPEMENT - Disable for Production !
 # ALLOWED_HOSTS = ['*']
 
-# 21-10-2025 - Needed for Azure but dont work when running locally developing !
+# 17-05-2026 - Needed for Azure but dont work when running locally developing !
 # PRODUCTION - Disable for Developement !
 ALLOWED_HOSTS = []
 
@@ -130,26 +136,19 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # No Database needed for this Starter
 # DATABASES = { }
 
-# 22-10-2025 - Loading the MariaDB settings from .env file
-DB_NAME=os.getenv('DB_NAME')
-DB_USER=os.getenv('DB_USER')
-DB_PASSWORD=os.getenv('DB_PASSWORD')
-DB_HOST=os.getenv('DB_HOST')
-
+# 17-05-2026 - PostgreSQL with a Serverless setup at Neon Cloud
 DATABASES = {
-    'default': {
 
-        # 09-11-2025 - For both MariaDB and MySQL
-        'ENGINE'  : 'django.db.backends.mysql',
+    'default': dj_database_url.config(
 
-        'NAME'    : DB_NAME,
-        'USER'    : DB_USER,
-        'PASSWORD': DB_PASSWORD,
-        'HOST'    : DB_HOST,
-                       
-        'PORT'    : 3306,
-    }
+        default=DATABASE_URL,
+
+        conn_max_age=600,
+        ssl_require=True, 
+        conn_health_checks=True,
+    )
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
