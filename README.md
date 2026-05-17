@@ -122,7 +122,7 @@ Your Django application is now available at `http://127.0.0.1:8000/`.
 
 ## The Admin Backend and Databases
 
-The Admin Backend is using a remote MariaDB Database for both Production and Developement, and is able to use a SQLite for Developement as well
+The Admin Backend is using a remote PostgreSQL Database at Neon for both Production and Developement, and is able to use a SQLite for Developement as well
 
 ```bash
 pip install -r requirements.txt
@@ -214,6 +214,12 @@ Make sure to set Debug = False in the file `mysite/settings.py`
 
 Make a commit to GitHub which will start GitHub Actions and the Website will be updated
 
+At Azure Portal go to the Configuration - Stack settings - Startup command: 
+
+"gunicorn mysite.wsgi:application --bind 0.0.0.0:$PORT"
+
+Make sure to set the environment variables at Azure Portal 
+
 ## Models
 
 Add the simple Model "Post" to be administrated by the Admin Backend and displayed by the Frontend.
@@ -243,6 +249,8 @@ This command will create a file for the migration of the Model to a Table in the
 python manage.py migrate
 ```
 This will create the Table Post in the DB and you are now ready for administrate the Posts by the Django Admin Backend
+
+
 
 Happy use of Django :-)
 
