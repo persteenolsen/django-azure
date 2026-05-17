@@ -45,10 +45,10 @@ DEBUG = False
 # 21-10-2025 - Needed for locally developing but dont work at Azure !
 # DEVELOPEMENT - Disable for Production !
 # ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # 17-05-2026 - Needed for Azure but dont work when running locally developing !
 # PRODUCTION - Disable for Developement !
-#ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['pso-django.azurewebsites.net']
 
 # 22-10-2025 - Needed at Azure to avoid 403 forbidden when trying to login to the Django Admin Backend

@@ -1,4 +1,4 @@
-# Python + Django + PostgreSQL + Neon + Models + Azure App Service
+# Python + Django + Models + PostgreSQL + Neon + Azure App Service
 
 This example shows how to use Django 5 on Azure App Service
 
@@ -124,23 +124,17 @@ Your Django application is now available at `http://127.0.0.1:8000/`.
 
 The Admin Backend is using a remote MariaDB Database for both Production and Developement, and is able to use a SQLite for Developement as well
 
-To connect to the MariaDB use "pymysql" installed and the packages from the requirements.txt when using a virtual invironment locally. At Azure everything will happen by DevOps 
-
 ```bash
 pip install -r requirements.txt
 ```
 
-For understad the "pymysql" take a look at the files needed for connecting to MariaDB: `mysite/mysql_setup.py` and 
-
-`mysite/__init__.py`
-
-Create a Super User for the Admin Backend in the MariaDB or SQLite
+Create a Super User for the Admin Backend in the PostgreSQL or SQLite
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Make the Migration to the MariaDB or SQLite 
+Make the Migration to the PostgreSQL or SQLite 
 
 ```bash
 python manage.py makemigrations
@@ -150,7 +144,7 @@ You will need to do the Migration at first and when / if you will add, update or
 
 For using a SQLite developing / locally make the config in the setting file `mysite/settings.py`
 
-Find the section DATABASES = {} and add support for SQLite and comment out the MySQL
+Find the section DATABASES = {} and add support for SQLite and comment out the PostgreSQL
 
 ## Static files for the Frontend
 
@@ -241,7 +235,7 @@ python manage.py makemigrations example
 ```
 Note: It is important to add the name of the app in the command `example` !!!
 
-This command will create a file for the migration of the Model to a Table in the MariaDB
+This command will create a file for the migration of the Model to a Table in the PostgreSQL
 
 - Now run the command: 
 
