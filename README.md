@@ -1,5 +1,3 @@
-
-
 # Python + Django + PostgreSQL + Neon + Models + Azure App Service
 
 This example shows how to use Django 5 on Azure App Service
