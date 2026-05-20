@@ -4,6 +4,8 @@ This example shows how to use Django 5 on Azure App Service
 
 Last updated: 20-05-2026
 
+Python version: 3.12
+
 ## Demo at Azure
 
 - https://pso-django.azurewebsites.net
@@ -214,11 +216,15 @@ Make sure to set Debug = False in the file `mysite/settings.py`
 
 Make a commit to GitHub which will start GitHub Actions and the Website will be updated
 
+At Azure Portal go to the Configuration and select Python version:
+
+3.12
+
 At Azure Portal go to the Configuration - Stack settings - Startup command: 
 
 "gunicorn mysite.wsgi:application --bind 0.0.0.0:$PORT"
 
-Make sure to set the environment variables at Azure Portal 
+Make sure to set the other environment variables at Azure Portal 
 
 ## Models
 
