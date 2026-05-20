@@ -42,9 +42,8 @@ SECRET_KEY=os.getenv('SECRET_KEY')
 # Not: Django will display a 404.html if you have created one :-)
 DEBUG = False
 
-# 21-10-2025 - Needed for locally developing but dont work at Azure !
+# 17-05-2026 - Needed for locally developing but dont work at Azure !
 # DEVELOPEMENT - Disable for Production !
-# ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # 17-05-2026 - Needed for Azure but dont work when running locally developing !
