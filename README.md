@@ -226,6 +226,12 @@ At Azure Portal go to the Configuration - Stack settings - Startup command:
 
 Make sure to set the other environment variables at Azure Portal 
 
+## Run the below command before deployment:
+
+```bash
+python manage.py check --deploy
+```
+
 ## Models
 
 Add the simple Model "Post" to be administrated by the Admin Backend and displayed by the Frontend.
